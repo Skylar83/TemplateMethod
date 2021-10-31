@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.util.concurrent.TimeUnit;
 
 public class Main extends JFrame implements ActionListener {
     private Container c;
@@ -101,6 +103,7 @@ public class Main extends JFrame implements ActionListener {
 
     }
 
+
     public void actionPerformed(ActionEvent e) {
         Network network = null;
         if (e.getSource() == jPost) {
@@ -124,12 +127,16 @@ public class Main extends JFrame implements ActionListener {
                     network = new Twitter(jUsername.getText(),new String(jPassword.getPassword()));
                     try {
                         network.post(jMessage.getText());
+                        TimeUnit.SECONDS.sleep(5);
+
                     } catch (InterruptedException ex) {
                         ex.printStackTrace();
                     }
+
                 }
             }
         }
+
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -139,3 +146,4 @@ public class Main extends JFrame implements ActionListener {
 
 
 }
+

@@ -48,4 +48,10 @@ public class Facebook extends Network{
             return false;
         }
     }
+
+    @Override
+    void logOut() {
+        System.out.println("User: '" + userName + "' was logged out from Facebook");
+    g_driver.quit();
+    }
 }
